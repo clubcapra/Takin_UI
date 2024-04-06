@@ -64,11 +64,67 @@ export const initialState: LaunchFilesState[] = [
     isLaunched: false,
   },
 ];
+export const launchFilesRove: LaunchFilesState[]=
+[
+  {
+    name: 'Common',
+    packageName:'rove_bringup',
+    fileName: 'real.launch.py',
+    isLaunched:false,   
+  },
+  {
+    name:'Navigation',
+    packageName:'rove_navigation',
+    fileName:'navigation.launch.py',
+    isLaunched:false,
+  },
+  {
+    name:'Slam 3D',
+    packageName:'rove_slam',
+    fileName:'3d_slam.launch.py',
+    isLaunched:false,
+  },
+  {
+    name:'Slam 2D',
+    packageName:'rove_slam',
+    fileName:'2d_slam.launch.py',
+    isLaunched:false,
+  },
+  {
+    name:'Arm',
+    packageName:'ovis2',
+    fileName:'arm.launch.py',
+    isLaunched:false,
+  },
+  {
+    name:'Behavior',
+    packageName:'rove_bringup',
+    fileName:'behavior.launch.py',
+    isLaunched:false,
+  },
+  {
+    name:'Ros Simulation',
+    packageName:'rove_description',
+    fileName:'sim.launch.py',
+    isLaunched:false,
+  }
+]
 
 export const launchFilesSlice = createSlice({
   name: 'launchFiles',
   initialState,
   reducers: {
+    changeRobot:(state, {payload}:PayloadAction<string>)=>{
+      if(payload=="rove")
+      {
+        return launchFilesRove;
+      }
+      if(payload=="markhor")
+      {
+        return initialState;
+      }
+      console.log(state);
+    },
     launchFile: (state, action: PayloadAction<string>) => {
       const element = state.find(
         (element) => element.fileName === action.payload
@@ -88,5 +144,4 @@ export const launchFilesSlice = createSlice({
   },
 });
 
-export const selectAllLaunchFiles = (state: GlobalState): LaunchFilesState[] =>
-  state.launchFiles;
+export const selectAllLaunchFiles = (state: GlobalState): LaunchFilesState[] =>  state.launchFiles;

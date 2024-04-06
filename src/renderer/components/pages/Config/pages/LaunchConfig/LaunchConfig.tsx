@@ -13,6 +13,7 @@ import { FaSync } from 'react-icons/fa';
 import { LoadingOverlay } from '@/renderer/components/common/LoadingOverlay';
 import { useActor } from '@xstate/react';
 import { rosService } from '@/renderer/state/ros';
+import { selectRobot } from '@/renderer/store/modules/robot';
 
 interface LaunchMsg {
   fileName: string;
@@ -28,8 +29,18 @@ interface LaunchedFiles {
 export const LaunchConfig: FC = () => {
   const dispatch = useDispatch();
   const allLaunchFiles = useSelector(selectAllLaunchFiles);
+  const robot= useSelector(selectRobot);
+  let launchCommand="";
   const [isLoading, setIsLoading] = useState(false);
   const [connectionState] = useActor(rosService);
+  if(robot=="markhor")
+  {
+    launchCommand='launchHandler/launchFile';
+  }
+  if(robot=="rove")
+  {
+    launchCommand='launchHandler/launchFileRos2';
+  }
 
   const onClick = useCallback(
     async (fileName: string, packageName: string) => {
@@ -37,7 +48,7 @@ export const LaunchConfig: FC = () => {
       try {
         const result = (await rosClient.callService(
           {
-            name: '/launchHandler/launchFile',
+            name: launchCommand,
           },
           { package: packageName, fileName }
         )) as LaunchMsg;

@@ -7,6 +7,7 @@ import { initialState as debugTabState } from '@/renderer/store/modules/debugTab
 import { initialState as launchFilesState } from '@/renderer/store/modules/launchFiles';
 import { initialState as armPresetsState } from '@/renderer/store/modules/armPresets';
 import { initialState as gpioPinsState } from '@/renderer/store/modules/gpioPins';
+import { initialState as robotState } from './modules/robot';
 import { log } from '@/renderer/logger';
 
 export const defaultState: GlobalState = {
@@ -17,6 +18,7 @@ export const defaultState: GlobalState = {
   launchFiles: launchFilesState,
   armPresets: armPresetsState,
   gpioPins: gpioPinsState,
+  robot: robotState,
 };
 
 // WARN

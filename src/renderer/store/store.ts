@@ -12,6 +12,7 @@ import { throttle } from 'lodash';
 import { launchFilesSlice } from './modules/launchFiles';
 import { armPresetsSlice } from './modules/armPresets';
 import { gpioPinsSlice } from './modules/gpioPins';
+import { robotSlice } from './modules/robot';
 
 const appReducer = combineReducers({
   feed: feedSlice.reducer,
@@ -21,6 +22,7 @@ const appReducer = combineReducers({
   launchFiles: launchFilesSlice.reducer,
   armPresets: armPresetsSlice.reducer,
   gpioPins: gpioPinsSlice.reducer,
+  robot: robotSlice.reducer,
 });
 
 export type GlobalState = ReturnType<typeof appReducer>;
