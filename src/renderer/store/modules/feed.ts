@@ -21,6 +21,7 @@ export enum FeedTypeEnum {
   Camera,
   Urdf,
   Graph,
+  Pedro,
   NotSelected,
 }
 
@@ -39,6 +40,7 @@ export type FeedType =
   | ICameraFeed
   | IUrdfFeed
   | IGraphFeed
+  | IPedroFeed
   | INotSelected;
 
 interface BaseFeed {
@@ -78,6 +80,11 @@ export interface IGraphFeed extends BaseFeed {
 
 export interface IGraphData {
   topic: TopicOptions<string>;
+  name: string;
+}
+
+export interface IPedroFeed extends BaseFeed {
+  type: FeedTypeEnum.Pedro;
   name: string;
 }
 
@@ -196,6 +203,11 @@ export const initialState: FeedState = {
         rotated: false,
       },
     },
+    pedro: {
+      type: FeedTypeEnum.Pedro,
+      id: 'pedro',
+      name: 'pedro'
+    }
   },
 };
 

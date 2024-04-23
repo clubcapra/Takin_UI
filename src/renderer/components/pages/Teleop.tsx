@@ -8,15 +8,15 @@ export const Teleop: FC = () => {
   return (
     <>
       <FlipperInfoPanel />
-      <Feed feed_id={feed_id.teleop.main} defaultFeed="front_cam" />
+      <Feed feed_id={feed_id.teleop.main} defaultFeed="pedro" />
       <StyledPIP left bottom>
-        <Feed feed_id={feed_id.teleop.bottom_left} defaultFeed="back_cam" />
+        <Feed feed_id={feed_id.teleop.bottom_left} defaultFeed="pedro" />
       </StyledPIP>
       <StyledPIP left top>
-        <Feed feed_id={feed_id.teleop.top_left} defaultFeed="empty" />
+        <Feed feed_id={feed_id.teleop.top_left} defaultFeed="pedro" />
       </StyledPIP>
       <StyledPIP right top>
-        <Feed feed_id={feed_id.teleop.top_right} defaultFeed="empty" />
+        <Feed feed_id={feed_id.teleop.top_right} defaultFeed="pedro" />
       </StyledPIP>
     </>
   );

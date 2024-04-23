@@ -3,6 +3,7 @@ import { CameraFeed } from '@/renderer/components/Feed/Feeds/CameraFeed';
 import { GraphFeed } from '@/renderer/components/Feed/Feeds/GraphFeed';
 import { TextFeed } from '@/renderer/components/Feed/Feeds/TextFeed';
 import { UrdfFeed } from '@/renderer/components/Feed/Feeds/UrdfFeed';
+import { PedroFeed } from '@/renderer/components/Feed/Feeds/PedroFeed';
 import { styled } from '@/renderer/globalStyles/styled';
 import {
   feedSlice,
@@ -62,6 +63,8 @@ const FeedView: FC<{
       return <UrdfFeed feed={feed} />;
     case FeedTypeEnum.Graph:
       return <GraphFeed feed={feed} />;
+    case FeedTypeEnum.Pedro:
+      return <PedroFeed />;
     default:
       return <TextFeed text="NOT SUPPORTED" />;
   }
